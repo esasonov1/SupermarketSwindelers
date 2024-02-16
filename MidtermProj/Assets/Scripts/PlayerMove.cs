@@ -7,12 +7,12 @@ public class PlayerMove : MonoBehaviour
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
     public Vector2 movement;
-    public GameHandler GameHandlerObj;
+    public GameHandler gameHandlerObj;
     // Start is called before the first frame update
     void Start()
     {
         if (GameObject.FindWithTag("GameHandler") != null){
-            GameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+            gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
         }
     }
 
@@ -27,7 +27,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(other.gameObject.tag == "Crate")
         {
-            
+            other.gameObject.GetComponent<CrateBehavior>().CollectItem(false);
         }
     }
 

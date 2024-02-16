@@ -13,9 +13,21 @@ public class GameHandler : MonoBehaviour
         
     }
 
+    public void AddItem(bool theft, string name)
+    {
+        if(theft)
+        {
+            pockets.Add(name);
+        }
+        else
+        {
+            cart.Add(name);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(cart[0]);
     }
 }
