@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed = 5f;
     public Vector2 movement;
     public GameHandler gameHandlerObj;
+    private CrateBehavior currCrate;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,17 +24,40 @@ public class PlayerMove : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.tag == "Crate")
-        {
-            other.gameObject.GetComponent<CrateBehavior>().CollectItem(false);
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.E) && currCrate != null) {
+            Debug.Log("E pressed, collecting crate item");
+
+            currCrate.CollectItem(false);
+        }
+        if(Input.GetKeyDown(KeyCode.D)) {
+            string droppedItem = gameHandlerObj.DropLastItem();
+
+            if(droppedItem != null) {
+                Debug.Log("D pressed, dropping: " + droppedItem);
+            }
+        }
         
     }
+
+    
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Crate")
+        {
+            currCrate = collision.gameObject.GetComponent<CrateBehavior>();
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Crate" && currCrate == collision.gameObject.GetComponent<CrateBehavior>())
+        {
+            currCrate = null;
+        }
+    }
+
 }
