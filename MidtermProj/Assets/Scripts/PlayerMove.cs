@@ -24,20 +24,15 @@ public class PlayerMove : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    // Update is called once per frame
-    void Update()
+   void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) && currCrate != null) {
-            Debug.Log("E pressed, collecting crate item");
-
+            Debug.Log("E pressed, adding crate item to cart");
             currCrate.CollectItem(false);
         }
-        if(Input.GetKeyDown(KeyCode.D)) {
-            string droppedItem = gameHandlerObj.DropLastItem();
-
-            if(droppedItem != null) {
-                Debug.Log("D pressed, dropping: " + droppedItem);
-            }
+        if(Input.GetKeyDown(KeyCode.T) && currCrate != null) {
+            Debug.Log("T pressed, theft, puting crate item in pocket");
+            currCrate.CollectItem(true);
         }
         
     }
