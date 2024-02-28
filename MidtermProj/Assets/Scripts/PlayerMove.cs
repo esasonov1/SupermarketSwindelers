@@ -8,8 +8,9 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed = 5f;
     public Vector2 movement;
     public GameHandler gameHandlerObj;
-    private CrateBehavior currCrate;
-    // Start is called before the first frame update
+    public List<CrateBehavior> cratesInRange;
+    public float lowestDist = -1f;
+
     void Start()
     {
         if (GameObject.FindWithTag("GameHandler") != null){
@@ -24,35 +25,27 @@ public class PlayerMove : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-   void Update()
+    void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && currCrate != null) {
-            Debug.Log("E pressed, adding crate item to cart");
-            currCrate.CollectItem(false);
-        }
-        if(Input.GetKeyDown(KeyCode.T) && currCrate != null) {
-            Debug.Log("T pressed, theft, puting crate item in pocket");
-            currCrate.CollectItem(true);
-        }
-        
+        if(cratesInRange.Count == 0)
+        {
+            lowestDist = -1f;
+        } 
     }
 
-    
-
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Crate")
         {
-            currCrate = collision.gameObject.GetComponent<CrateBehavior>();
+            cratesInRange.Add(collision.gameObject.GetComponent<CrateBehavior>());
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Crate" && currCrate == collision.gameObject.GetComponent<CrateBehavior>())
+        if(collision.gameObject.tag == "Crate")
         {
-            currCrate = null;
+            cratesInRange.Remove(collision.gameObject.GetComponent<CrateBehavior>());
         }
     }
-
 }
