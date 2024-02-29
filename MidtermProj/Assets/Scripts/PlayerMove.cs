@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
         if(cratesInRange.Count == 0)
         {
             lowestDist = -1f;
-        } 
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

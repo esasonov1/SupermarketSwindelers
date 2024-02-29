@@ -5,7 +5,7 @@ using UnityEngine;
 public class CrateBehavior : MonoBehaviour
 {
     public GameObject grocerySprite;
-    public GameHandler gameHandlerObj;
+    public ListHandler listHandler;
     public PlayerMove player;
     public GameObject emptySprite;
     public GameObject fullSprite;
@@ -18,7 +18,7 @@ public class CrateBehavior : MonoBehaviour
     void Start()
     {
         if (GameObject.FindWithTag("GameHandler") != null){
-            gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+            listHandler = GameObject.FindWithTag("GameHandler").GetComponent<ListHandler>();
         }
         if (GameObject.FindWithTag("Player") != null){
             player = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
@@ -27,19 +27,19 @@ public class CrateBehavior : MonoBehaviour
 
     void collectItem(bool theft)
     {
+        interactable = false;
         grocerySprite.SetActive(false);
         emptySprite.SetActive(true);
         fullSprite.SetActive(false);
         full = false;
-        gameHandlerObj.AddItem(theft, groceryName);
+        listHandler.AddItem(theft, groceryName);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(full)
         {
-            if (distanceFromPlayer != player.lowestDist)
+            if (distanceFromPlayer != player.lowestDist || !interactable)
             {
                 isClosest = false;
                 grocerySprite.SetActive(false);
@@ -47,7 +47,7 @@ public class CrateBehavior : MonoBehaviour
             if (interactable)
             {
                 distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
-                if (player.lowestDist == -1f || distanceFromPlayer <= player.lowestDist || isClosest)
+                if (player.lowestDist == -1f || distanceFromPlayer < player.lowestDist || isClosest)
                 {
                     player.lowestDist = distanceFromPlayer;
                     isClosest = true;
@@ -68,7 +68,7 @@ public class CrateBehavior : MonoBehaviour
         }
     }
         
-    void OnTriggerEnter2D(Collider2D other) //This checks if the player collides with this interactable's collider
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -76,7 +76,7 @@ public class CrateBehavior : MonoBehaviour
         }
     }
  
-    void OnTriggerExit2D(Collider2D other) //This checks if the player leaves the collider of the interactable.
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
