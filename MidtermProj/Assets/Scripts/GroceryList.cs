@@ -3,28 +3,38 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GroceryList : MonoBehaviour{
+public class GroceryList : MonoBehaviour
+{
 
-      public GameObject listMenuUI;
-      public GameObject buttonOpenList;
+    public GameObject listMenuUI;
+    public GameObject buttonOpenList;
 
 
-      void Start (){
+    void Start()
+    {
+
+        if (listMenuUI != null)
+        {
             listMenuUI.SetActive(false);
-      }
+        }
 
-      void Update (){
-      }
+    }
 
-      //Button Functions:
-      public void Button_OpenList(){
-           listMenuUI.SetActive(true);
-           buttonOpenList.SetActive(false);
-      }
+    void Update()
+    {
+    }
 
-      public void Button_CloseList() {
-           listMenuUI.SetActive(false);
-           buttonOpenList.SetActive(true);
-      }
+    //Button Functions:
+    public void Button_OpenList()
+    {
+        listMenuUI.SetActive(true);
+        buttonOpenList.SetActive(false);
+    }
+
+    public void Button_CloseList()
+    {
+        listMenuUI.SetActive(false);
+        buttonOpenList.SetActive(true);
+    }
 }
 

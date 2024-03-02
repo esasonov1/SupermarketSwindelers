@@ -6,8 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
+    public static GameObject theGameHandler;
 
-    public void playGame() {
+    void Awake()
+    {
+        if (theGameHandler != null && theGameHandler != this.gameObject)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            theGameHandler = this.gameObject;
+        }
+        DontDestroyOnLoad(theGameHandler);
+    }
+
+    public void playGame()
+    {
         SceneManager.LoadScene("GameScene");
     }
 
@@ -25,6 +40,6 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

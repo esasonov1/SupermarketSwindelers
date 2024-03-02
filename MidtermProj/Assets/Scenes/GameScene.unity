@@ -3762,7 +3762,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8926919548403072896, guid: f355544d098af4ea283609c9cd66f119, type: 3}
   m_PrefabInstance: {fileID: 4683080576971753794}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4683080576971753795}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8110d5c421c91a42a622f087e9fdd9c, type: 3}
@@ -3773,7 +3773,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6807026047075013765, guid: f355544d098af4ea283609c9cd66f119, type: 3}
   m_PrefabInstance: {fileID: 4683080576971753794}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4683080576971753795}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01cc1a46d6cda4b41852bc8faa6148f7, type: 3}
@@ -4981,6 +4981,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4258103289265913291, guid: f355544d098af4ea283609c9cd66f119, type: 3}
+      propertyPath: orderText
+      value: 
+      objectReference: {fileID: 1378883000}
+    - target: {fileID: 4258103289265913291, guid: f355544d098af4ea283609c9cd66f119, type: 3}
+      propertyPath: barHandlerObj
+      value: 
+      objectReference: {fileID: 1804559588}
     - target: {fileID: 5335009855184204560, guid: f355544d098af4ea283609c9cd66f119, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -5030,10 +5038,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1823184860}
     - target: {fileID: 6807026047075013765, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-      propertyPath: gameHandler
-      value: 
-      objectReference: {fileID: 1606259122}
-    - target: {fileID: 6807026047075013765, guid: f355544d098af4ea283609c9cd66f119, type: 3}
       propertyPath: buttonOpenList
       value: 
       objectReference: {fileID: 904758001}
@@ -5041,72 +5045,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameHandler
       objectReference: {fileID: 0}
-    - target: {fileID: 8926919548403072896, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-      propertyPath: order.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926919548403072896, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-      propertyPath: order.Array.data[0]
-      value: egg
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926919548403072896, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-      propertyPath: order.Array.data[1]
-      value: tomato
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926919548403072896, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-      propertyPath: order.Array.data[2]
-      value: milk
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926919548403072896, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-      propertyPath: order.Array.data[3]
-      value: cheese
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926919548403072896, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-      propertyPath: order.Array.data[4]
-      value: cheese
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926919548403072896, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-      propertyPath: order.Array.data[5]
-      value: fish
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8528177239137667274, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4683080576971753796}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f355544d098af4ea283609c9cd66f119, type: 3}
---- !u!1 &4683080576971753795 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8528177239137667274, guid: f355544d098af4ea283609c9cd66f119, type: 3}
-  m_PrefabInstance: {fileID: 4683080576971753794}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4683080576971753796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4683080576971753795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86ab87c47c1c39f4bb273a8d38942674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barHandlerObj: {fileID: 1804559588}
-  cart: []
-  pockets: []
-  order:
-  - egg
-  - tomato
-  - milk
-  - fish
-  ordered: []
-  orderedErrors: []
-  orderText: {fileID: 1378883000}
-  groceryCost: 5
-  totalTime: 15
 --- !u!224 &4907303723698029332 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7876732623461324829, guid: a8db8cb682c0c4055b1f87751376739c, type: 3}
