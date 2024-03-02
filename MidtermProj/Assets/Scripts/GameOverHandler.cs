@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameOverHandler : MonoBehaviour
 {
     public Scene gameOverScene;
-    public Text finalScore;
 
     public void SetGameOver()
     {
