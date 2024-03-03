@@ -45,21 +45,21 @@ public class ScoreSummary : MonoBehaviour
             Debug.Log("you won!");
             scoreObj.text =
                 "You Won!"
-                + "Total Budget: 40"
-                + "Items bought: -" + price
-                + "Tip: +" + tip
-                + "Items stolen: +" + stolen
-                + "Net Gain: " + gain1;
+                + "\n Total Budget: 40"
+                + "\n Items bought: -" + price
+                + "\n Tip: +" + tip
+                + "\n Items stolen: +" + stolen
+                + "\n Net Gain: " + gain1;
         }
         else
         {
             Debug.Log("you lost...");
             scoreObj.text =
-                "You Lost! Failed to complete order :("
-                + "Total Budget: 40"
+                "You Lost! Failed to complete order :( \n"
+                + "Total Budget: 40 \n"
                 + "Items bought: -" + price
-                + "Items stolen: +" + stolen
-                + "Net Gain: " + gain2;
+                + "\n Items stolen: +" + stolen
+                + "\n Net Gain: " + gain2;
         }
 
     }
