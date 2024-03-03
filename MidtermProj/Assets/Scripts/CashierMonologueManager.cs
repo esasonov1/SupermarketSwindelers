@@ -9,6 +9,8 @@ public class CashierMonologueManager : MonoBehaviour
        public Text monologueText;
        public string[] monologue;
        public int monologueLength;
+       public List<string> missing;
+       public List<string> errors;
 
        void Start(){
               monologueBox.SetActive(false);
@@ -16,17 +18,18 @@ public class CashierMonologueManager : MonoBehaviour
        }
 
        void Update(){
-              //temporary testing before NPC is created
-            //   if (Input.GetKeyDown("p")){
-            //          monologueBox.SetActive(true);
-            //   }
        }
 
        public void OpenMonologue(){
               monologueBox.SetActive(true);
+              int missing = GameObject.FindWithTag("GameHandler").GetComponent<ListHandler>().order.Count;
+              int errors = GameObject.FindWithTag("GameHandler").GetComponent<ListHandler>().orderedErrors.Count;
  
-              //auto-loads the first line of monologue
-              monologueText.text = monologue[0];
+             if ((errors == 0) && (missing == 0)) {
+                monologueText.text = monologue[1];
+             } else {
+                monologueText.text = monologue[0];
+             }
        }
 
        public void CloseMonologue(){
