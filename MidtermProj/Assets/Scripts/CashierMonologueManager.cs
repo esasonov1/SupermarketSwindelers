@@ -28,6 +28,10 @@ public class CashierMonologueManager : MonoBehaviour
              if ((errors == 0) && (missing == 0)) {
                 monologueText.text = monologue[1];
              } else {
+               GameObject yesButton = monologueBox.transform.Find("Finish").gameObject;
+               yesButton.SetActive(false);
+               GameObject noButton = monologueBox.transform.Find("Continue").gameObject;
+               noButton.SetActive(false);
                 monologueText.text = monologue[0];
              }
        }
