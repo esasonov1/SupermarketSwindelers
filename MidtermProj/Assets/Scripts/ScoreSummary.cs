@@ -7,14 +7,18 @@ public class ScoreSummary : MonoBehaviour
 {
     public Text scoreObj;
 
+    public GameObject gameOverCanvas;
+
     public ListHandler listObj;
 
     public ListHandler winloseObj;
 
 
     // Start is called before the first frame update
-    void Start()
+
+    public void EndGame()
     {
+        gameOverCanvas.SetActive(true);
 
         if (GameObject.FindWithTag("Score") != null)
         {
@@ -34,8 +38,11 @@ public class ScoreSummary : MonoBehaviour
         double gain1 = (40 - price) + tip + stolen;
         double gain2 = (40 - price) + stolen;
 
+        Debug.Log(stolen);
+
         if (listObj.cart.Count == 4)
         {
+            Debug.Log("you won!");
             scoreObj.text =
                 "You Won!"
                 + "Total Budget: 40"
@@ -46,6 +53,7 @@ public class ScoreSummary : MonoBehaviour
         }
         else
         {
+            Debug.Log("you lost...");
             scoreObj.text =
                 "You Lost! Failed to complete order :("
                 + "Total Budget: 40"
