@@ -8,6 +8,7 @@ TagManager:
   - Crate
   - WorldBoundary
   - Bar
+  - MonologueManager
   layers:
   - Default
   - TransparentFX
