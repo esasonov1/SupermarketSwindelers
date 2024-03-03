@@ -9,6 +9,7 @@ TagManager:
   - WorldBoundary
   - Bar
   - MonologueManager
+  - Score
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ListHandler : MonoBehaviour
 {
-    [SerializeField] GameOverHandler gameOverHandler;
+    public ScoreSummary scoreSummary;
 
     public static float savings = 0f;
     public BarHandler barHandlerObj;
@@ -46,7 +46,7 @@ public class ListHandler : MonoBehaviour
             else
             {
                 totalTime = 0f;
-                gameOverHandler.SetGameOver();
+                scoreSummary.EndGame();
 
             }
             barHandlerObj.values[2] = totalTime * 2f;
