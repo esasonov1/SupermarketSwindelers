@@ -31,35 +31,34 @@ public class ScoreSummary : MonoBehaviour
             listObj = GameObject.FindWithTag("GameHandler").GetComponent<ListHandler>();
         }
 
-        double price = 10 * listObj.cart.Count;
+        double price = 10 * listObj.ordered.Count;
         double tip = 0.2 * price;
 
-        double stolen = 10 * listObj.pockets.Count;
+        double stolen = 10 * listObj.orderedErrors.Count;
         double gain1 = (40 - price) + tip + stolen;
         double gain2 = (40 - price) + stolen;
 
-        Debug.Log(stolen);
-
-        if (listObj.cart.Count == 4)
+        if (listObj.ordered.Count == 4)
         {
             Debug.Log("you won!");
             scoreObj.text =
                 "You Won!"
-                + "\n Total Budget: 40"
-                + "\n Items bought: -" + price
-                + "\n Tip: +" + tip
-                + "\n Items stolen: +" + stolen
-                + "\n Net Gain: " + gain1;
+                + "Total Budget: 40 \n"
+                + "Items bought: -" + price + "\n"
+                + "Tip: +" + tip + "\n"
+                + "Items stolen: +" + stolen + "\n"
+                + "Net Gain: " + gain1;
         }
         else
         {
             Debug.Log("you lost...");
+            Debug.Log(stolen);
             scoreObj.text =
                 "You Lost! Failed to complete order :( \n"
-                + "Total Budget: 40 \n"
-                + "Items bought: -" + price
-                + "\n Items stolen: +" + stolen
-                + "\n Net Gain: " + gain2;
+                + "Total Budget: 40" + "\n"
+                + "Items bought: -" + price + "\n"
+                + "Items stolen: +" + stolen + "\n"
+                + "Net Gain: " + gain2;
         }
 
     }
