@@ -11,6 +11,7 @@ TagManager:
   - MonologueManager
   - Score
   - patron
+  - StaticHandler
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,7 @@ public class ListHandler : MonoBehaviour
 
     public static float savings = 0f;
     public BarHandler barHandlerObj;
+    public GameHandler staticHandlerObj;
 
     public List<string> cart = new List<string>();
     public List<string> pockets = new List<string>();
@@ -25,49 +26,54 @@ public class ListHandler : MonoBehaviour
 
     public void Start()
     {
-        if (SceneManager.GetActiveScene().name == "GameScene")
+        if (GameObject.FindWithTag("StaticHandler") != null)
         {
-            if (GameObject.FindWithTag("Bar") != null)
-            {
-                barHandlerObj = GameObject.FindWithTag("Bar").GetComponent<BarHandler>();
-            }
+            staticHandlerObj = GameObject.FindWithTag("StaticHandler").GetComponent<GameHandler>();
         }
-
+        if (GameObject.FindWithTag("Bar") != null)
+        {
+            barHandlerObj = GameObject.FindWithTag("Bar").GetComponent<BarHandler>();
+        }
+        switch(staticHandlerObj.levelNum)
+        {
+            case 1:
+                order.Add("tomato");
+                order.Add("egg");
+                order.Add("milk");
+                order.Add("egg");
+                break;
+            default:
+                Debug.Log("Unimplemented Level Number.");
+                break;
+        }
     }
 
     public void Update()
     {
-        if (SceneManager.GetActiveScene().name == "GameScene")
+        if (totalTime > 0f)
         {
-            if (totalTime > 0f)
-            {
-                totalTime -= Time.deltaTime;
-            }
-            else
-            {
-                totalTime = 0f;
-                scoreSummary.EndGame();
-
-            }
-            barHandlerObj.values[2] = totalTime * 2f;
-            string listText = "<b>Grocery List: </b>";
-            for (int i = 0; i < order.Count; i++)
-            {
-                listText += "\n - ";
-                listText += order[i];
-            }
-            for (int i = 0; i < ordered.Count; i++)
-            {
-                listText += ("<color=grey>\n - " + ordered[i] + "</color>");
-            }
-            for (int i = 0; i < orderedErrors.Count; i++)
-            {
-                listText += ("<color=#DD5555FF>\n - " + orderedErrors[i] + "</color>");
-            }
-            orderText.text = listText;
-
+            totalTime -= Time.deltaTime;
         }
-
+        else
+        {
+            totalTime = 0f;
+        }
+        barHandlerObj.values[2] = totalTime * 2f;
+        string listText = "<b>Grocery List: </b>";
+        for (int i = 0; i < order.Count; i++)
+        {
+            listText += "\n - ";
+            listText += order[i];
+        }
+        for (int i = 0; i < ordered.Count; i++)
+        {
+            listText += ("<color=grey>\n - " + ordered[i] + "</color>");
+        }
+        for (int i = 0; i < orderedErrors.Count; i++)
+        {
+            listText += ("<color=#DD5555FF>\n - " + orderedErrors[i] + "</color>");
+        }
+        orderText.text = listText;
     }
 
     public void AddItem(bool theft, string name)
@@ -104,8 +110,7 @@ public class ListHandler : MonoBehaviour
 
     public void ReturnStolenItems()
     {
-        Debug.Log("ReturnStolenItems");
         pockets.Clear();
-
+        orderedErrors.Clear();
     }
 }

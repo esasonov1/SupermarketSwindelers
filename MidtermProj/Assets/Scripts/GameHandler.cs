@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     public static GameObject theGameHandler;
+    public int levelNum;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class GameHandler : MonoBehaviour
 
     public void playGame()
     {
+        levelNum = 1;
         SceneManager.LoadScene("GameScene");
     }
 
