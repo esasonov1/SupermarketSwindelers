@@ -101,4 +101,11 @@ public class ListHandler : MonoBehaviour
             }
         }
     }
+
+    public void ReturnStolenItems()
+    {
+        Debug.Log("ReturnStolenItems");
+        pockets.Clear();
+
+    }
 }

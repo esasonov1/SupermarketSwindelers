@@ -10,6 +10,7 @@ TagManager:
   - Bar
   - MonologueManager
   - Score
+  - patron
   layers:
   - Default
   - TransparentFX
