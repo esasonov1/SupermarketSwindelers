@@ -8,15 +8,19 @@ public class PatronMove : MonoBehaviour
     public float moveSpeed = 5f;
     public Vector2 movement;
 
-    private ListHandler listHandler;
-
+    public ListHandler listHandler;
+    public GameHandler gameHandlerObj;
     private bool playerInSight = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        listHandler = GameObject.FindWithTag("ListHandler").GetComponent<ListHandler>();
+        if (GameObject.FindWithTag("GameHandler") != null){
+            gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+            // listHandler = GameObject.GetComponent<ListHandler>();
+
+        }
         changeDirection();
     }
 
@@ -37,7 +41,7 @@ public class PatronMove : MonoBehaviour
 
     void changeDirection(){
         movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        Invoke("changeDirection", Random.Range(2, 5)); // Change direction every 2 to 5 sec
+        Invoke("changeDirection", Random.Range(2, 5)); 
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -353,6 +353,8 @@ GameObject:
   - component: {fileID: 81713622}
   - component: {fileID: 81713621}
   - component: {fileID: 81713620}
+  - component: {fileID: 81713623}
+  - component: {fileID: 81713624}
   m_Layer: 0
   m_Name: patron
   m_TagString: patron
@@ -438,6 +440,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &81713623
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81713619}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.5644832, y: 2.5788486}
+      - {x: -0.109374344, y: 5.501066}
+      - {x: -2.5363398, y: 2.1172302}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: 2.214329, y: 1.8199902}
+  m_UseDelaunayMesh: 0
+--- !u!114 &81713624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81713619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d121196e41de44589873d247003fe55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 81713620}
+  moveSpeed: 5
+  movement: {x: 0, y: 0}
+  listHandler: {fileID: 1606259125}
 --- !u!1 &106280978
 GameObject:
   m_ObjectHideFlags: 0
@@ -5228,6 +5297,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01cc1a46d6cda4b41852bc8faa6148f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1606259125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4258103289265913291, guid: f355544d098af4ea283609c9cd66f119, type: 3}
+  m_PrefabInstance: {fileID: 4683080576971753794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ab87c47c1c39f4bb273a8d38942674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1609546762 stripped
