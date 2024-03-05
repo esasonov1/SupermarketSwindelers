@@ -2,65 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreSummary : MonoBehaviour
 {
-    public Text scoreObj;
+    public Text scoreText;
 
-    public GameObject gameOverCanvas;
+    public GameHandler staticHandlerObj;
 
-    public ListHandler listObj;
+    public float winThreshold = 0f;
 
-    public ListHandler winloseObj;
-
-
-    // Start is called before the first frame update
-
-    public void EndGame()
+    public void Start()
     {
-        gameOverCanvas.SetActive(true);
-
-        if (GameObject.FindWithTag("Score") != null)
+        if (GameObject.FindWithTag("StaticHandler") != null)
         {
-            scoreObj = GameObject.FindWithTag("Score").GetComponent<Text>();
+            staticHandlerObj = GameObject.FindWithTag("StaticHandler").GetComponent<GameHandler>();
         }
-
-
-        if (GameObject.FindWithTag("GameHandler") != null)
+        string text = "Leftover Budget/Order Payment: " + staticHandlerObj.scores[0].ToString("0.00") + "\nPurchased Items: -"
+        + staticHandlerObj.scores[1].ToString("0.00") + "\nTip/Time Bonus: " + staticHandlerObj.scores[2].ToString("0.00") + "\nStolen Goods Value: "
+        + staticHandlerObj.scores[3].ToString("0.00");
+        float totalScore = staticHandlerObj.scores[0] + staticHandlerObj.scores[2] + staticHandlerObj.scores[3];
+        text += "\n\nTotal Earnings: " + totalScore.ToString("0.00");
+        if(totalScore >= winThreshold)
         {
-            listObj = GameObject.FindWithTag("GameHandler").GetComponent<ListHandler>();
-        }
-
-        double price = 10 * listObj.ordered.Count;
-        double tip = 0.2 * price;
-
-        double stolen = 10 * listObj.orderedErrors.Count;
-        double gain1 = (40 - price) + tip + stolen;
-        double gain2 = (40 - price) + stolen;
-
-        if (listObj.ordered.Count == 4)
-        {
-            Debug.Log("you won!");
-            scoreObj.text =
-                "You Won!"
-                + "Total Budget: 40 \n"
-                + "Items bought: -" + price + "\n"
-                + "Tip: +" + tip + "\n"
-                + "Items stolen: +" + stolen + "\n"
-                + "Net Gain: " + gain1;
+            text += "\n\nI was able to pay my bills!";
         }
         else
         {
-            Debug.Log("you lost...");
-            Debug.Log(stolen);
-            scoreObj.text =
-                "You Lost! Failed to complete order :( \n"
-                + "Total Budget: 40" + "\n"
-                + "Items bought: -" + price + "\n"
-                + "Items stolen: +" + stolen + "\n"
-                + "Net Gain: " + gain2;
+            text += "\n\nAnother sleepless night without heating...";
         }
+        scoreText.text = text;
+    }
 
+    public void ReturnToTitle()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
+
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
 }

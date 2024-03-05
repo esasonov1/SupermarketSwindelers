@@ -8,7 +8,6 @@ public class ListHandler : MonoBehaviour
 {
     public ScoreSummary scoreSummary;
 
-    public static float savings = 0f;
     public BarHandler barHandlerObj;
     public GameHandler staticHandlerObj;
 
@@ -16,6 +15,7 @@ public class ListHandler : MonoBehaviour
     public List<string> pockets = new List<string>();
     public List<string> order = new List<string>();
     public List<string> ordered = new List<string>();
+    public List<string> stolen = new List<string>();
     public List<string> orderedErrors = new List<string>();
 
     public Text orderText;
@@ -68,6 +68,10 @@ public class ListHandler : MonoBehaviour
         for (int i = 0; i < ordered.Count; i++)
         {
             listText += ("<color=grey>\n - " + ordered[i] + "</color>");
+        }        
+        for (int i = 0; i < stolen.Count; i++)
+        {
+            listText += ("<color= #8F7D99FF>\n - " + stolen[i] + "</color>");
         }
         for (int i = 0; i < orderedErrors.Count; i++)
         {
@@ -84,7 +88,7 @@ public class ListHandler : MonoBehaviour
             if (order.Contains(name))
             {
                 order.Remove(name);
-                ordered.Add(name);
+                stolen.Add(name);
             }
             else
             {
@@ -108,9 +112,29 @@ public class ListHandler : MonoBehaviour
         }
     }
 
+    public void CalcScore()
+    {
+        if(order.Count == 0)
+        {
+            staticHandlerObj.scores[0] = (float)System.Math.Round(barHandlerObj.values[0],2);
+        }
+        else
+        {
+            staticHandlerObj.scores[0] = 0.00f;
+        }
+        staticHandlerObj.scores[1] = (float)System.Math.Round(barHandlerObj.values[1],2);
+        staticHandlerObj.scores[2] = (float)System.Math.Round(barHandlerObj.values[2],2);
+        staticHandlerObj.scores[3] = (float)System.Math.Round(barHandlerObj.values[3],2);
+    }
+
     public void ReturnStolenItems()
     {
+        barHandlerObj.values[3] = 0f;
+        for(int i = 0; i < stolen.Count; i++)
+        {
+            order.Add(stolen[i]);
+        }
+        stolen.Clear();
         pockets.Clear();
-        orderedErrors.Clear();
     }
 }

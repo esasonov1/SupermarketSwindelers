@@ -13,11 +13,7 @@ public class TutorialHandler : MonoBehaviour
         tutorialScreenUI.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void Button_OpenTutorial(){
         tutorialScreenUI.SetActive(true);

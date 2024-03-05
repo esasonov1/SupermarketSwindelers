@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 412198014}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1783940811}
+        m_TargetAssemblyTypeName: ScoreSummary, Assembly-CSharp
+        m_MethodName: ReturnToTitle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &412198014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +361,7 @@ GameObject:
   - component: {fileID: 1225156036}
   - component: {fileID: 1225156035}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -500,7 +512,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1370171607}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1783940811}
+        m_TargetAssemblyTypeName: ScoreSummary, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1370171607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,7 +634,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Return to Title
 --- !u!222 &1413425871
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -631,7 +655,7 @@ GameObject:
   - component: {fileID: 1545711685}
   - component: {fileID: 1545711684}
   m_Layer: 5
-  m_Name: GameOverText
+  m_Name: ResultsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -690,7 +714,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GameOver
+  m_Text: Results
 --- !u!222 &1545711685
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -781,7 +805,7 @@ GameObject:
   - component: {fileID: 1783940807}
   - component: {fileID: 1783940811}
   m_Layer: 5
-  m_Name: GameOverCanvas
+  m_Name: ResultsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -883,9 +907,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87950cddfe4ed42e6a0fd8eb13283ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreObj: {fileID: 2030102422}
-  listObj: {fileID: 0}
-  winloseObj: {fileID: 0}
+  scoreText: {fileID: 2030102422}
+  staticHandlerObj: {fileID: 2143059812}
+  winThreshold: 50
+--- !u!1001 &1789991803
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3626132738364609147, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_Name
+      value: StaticHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 346.45517
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 184.9567
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.2305996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343728405135923922, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772333043252351501, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+      propertyPath: scores.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
 --- !u!1 &1999820877
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +1046,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Quit
 --- !u!222 &1999820880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -979,7 +1068,7 @@ GameObject:
   - component: {fileID: 2030102422}
   m_Layer: 5
   m_Name: FinalScoreText
-  m_TagString: Score
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1026,10 +1115,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -1037,7 +1126,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hello
+  m_Text: 'Score:'
 --- !u!222 &2030102423
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1046,3 +1135,14 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030102420}
   m_CullTransparentMesh: 1
+--- !u!114 &2143059812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5772333043252351501, guid: 72df8acf2916ec24fbf0f8cc9bea2430, type: 3}
+  m_PrefabInstance: {fileID: 1789991803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8110d5c421c91a42a622f087e9fdd9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

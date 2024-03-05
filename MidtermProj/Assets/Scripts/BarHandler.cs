@@ -7,16 +7,29 @@ public class BarHandler : MonoBehaviour
     public float maxValue;
     public float[] values = new float[4];
     public RectTransform[] valueBars;
+    public GameHandler staticHandlerObj;
     public float bgLength;
     private float lengthPerVal;
 
     void Start()
     {
+        if (GameObject.FindWithTag("StaticHandler") != null)
+        {
+            staticHandlerObj = GameObject.FindWithTag("StaticHandler").GetComponent<GameHandler>();
+        }
         lengthPerVal = bgLength/maxValue;
-        values[0] = 40f;
-        values[1] = 0f;
-        values[2] = 30f;
-        values[3] = 0f;
+        switch(staticHandlerObj.levelNum)
+        {
+            case 1:
+                values[0] = 40f;
+                values[1] = 0f;
+                values[2] = 40f;
+                values[3] = 0f;
+                break;
+            default:
+                Debug.Log("Unimplemented Level Number.");
+                break;
+        }
     }
 
     void Update()

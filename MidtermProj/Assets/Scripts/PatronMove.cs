@@ -8,19 +8,12 @@ public class PatronMove : MonoBehaviour
     public float moveSpeed = 5f;
     public Vector2 movement;
 
-    public ListHandler listHandler;
-    public GameHandler gameHandlerObj;
-    private bool playerInSight = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (GameObject.FindWithTag("GameHandler") != null){
-            gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
-            // listHandler = GameObject.GetComponent<ListHandler>();
 
-        }
         changeDirection();
     }
 
@@ -28,10 +21,7 @@ public class PatronMove : MonoBehaviour
     void Update()
     {
         movePatron();
-        if (Input.GetKeyDown(KeyCode.Q) && playerInSight)
-        {
-            listHandler.ReturnStolenItems();
-        }
+
     }
 
     void movePatron()
@@ -44,19 +34,5 @@ public class PatronMove : MonoBehaviour
         Invoke("changeDirection", Random.Range(2, 5)); 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInSight = true;
-        }
-    }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInSight = false;
-        }
-    }
 }
